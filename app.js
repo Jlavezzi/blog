@@ -64,13 +64,6 @@ app.get('/', (req,res)=>{
     res.render('home',{HomeContent:homeStartingContent.default, post:posts})
   })
 
-
-
-
-  // res.render('home',{
-  //   HomeContent:homeStartingContent.default,
-  //   post: ,
-
   })
 
 // })
@@ -96,10 +89,9 @@ const blog_i =  new blog({
   title:req.body.postTitle,
   content: req.body.postBody
 })
-// posts.push(blog_i)
+
+//checking for errors
 //save to root route
-
-
 blog_i.save((err)=>{
   if (!err) {
     res.redirect('/')
@@ -112,10 +104,9 @@ blog_i.save((err)=>{
 
 //posts route
 app.get('/posts/:postid',(req,res)=>{
-  //changing router params to lowerCase
- // var router= _.lowerCase(req.params.postName);
+  //extracting db id of a post
  var router = req.params.postid
-//looping through each items in the posts array
+//looping through each items in the blog collection
 blog.findOne({_id:router}, function(err, foundList){
     res.render('post',{
         postHeading:foundList.title,
