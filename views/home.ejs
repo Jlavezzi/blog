@@ -9,17 +9,18 @@
   <h1><%=item.title%></h1>
 
 
-  <%  if (item.body.length > 100) { %>
-      <p>  <%=item.body.slice(0,100) +'...' %>
-      <a href="/posts/<%=item.title%>">Read more</a>
+  <%  if (item.content.length > 100) { %>
+      <p>  <%=item.content.slice(0,100) +'...' %>
+      <a href="/posts/<%=item._id%>">Read more</a>
       </p>
 
 
+    <%}else{%>
+      <p><%= item.content%></p>
     <%}%>
 
 
 <%});%>
-
 
 
 
